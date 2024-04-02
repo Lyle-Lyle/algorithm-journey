@@ -18,6 +18,7 @@ public class Code02_HeapSort {
 	// i位置的数，向上调整大根堆
 	// arr[i] = x，x是新来的！往上看，直到不比父亲大，或者来到0位置(顶)
 	public static void heapInsert(int[] arr, int i) {
+		// 如果当前位置的数大于父位置的数，则交换，并且继续跟父位置比较
 		while (arr[i] > arr[(i - 1) / 2]) {
 			swap(arr, i, (i - 1) / 2);
 			i = (i - 1) / 2;
