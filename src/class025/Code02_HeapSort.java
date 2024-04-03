@@ -30,18 +30,21 @@ public class Code02_HeapSort {
 	// 当前堆的大小为size
 	public static void heapify(int[] arr, int i, int size) {
 		int l = i * 2 + 1;
+		// 有左孩子，l
 		while (l < size) {
-			// 有左孩子，l
-			// 右孩子，l+1
+			// 如果有右孩子，l+1
+			// 并且右孩子的值大于左孩子的值那么best就是右孩子，否则是左孩子
 			// 评选，最强的孩子，是哪个下标的孩子
-			int best = l + 1 < size && arr[l + 1] > arr[l] ? l + 1 : l;
-			// 上面已经评选了最强的孩子，接下来，当前的数和最强的孩子之前，最强下标是谁
-			best = arr[best] > arr[i] ? best : i;
-			if (best == i) {
+			int child = l + 1 < size && arr[l + 1] > arr[l] ? l + 1 : l;
+			// 左右孩子中大的那个跟i位置比，拿到大的下标
+			child = arr[child] > arr[i] ? child : i;
+			// 如果大的下标就是i，那就不用变，已经满足大根堆；否则就交换
+			if (child == i) {
 				break;
 			}
-			swap(arr, best, i);
-			i = best;
+			swap(arr, child, i);
+			// i移动到child位置，继续跟剩下的数比较
+			i = child;
 			l = i * 2 + 1;
 		}
 	}
