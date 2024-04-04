@@ -8,9 +8,10 @@ public class Code03_MinimumOperationsToHalveArraySum {
 
 	// 提交时把halveArray1改名为halveArray
 	public static int halveArray1(int[] nums) {
-		// 大根堆
+		// 大根堆 由比较器决定 Double因为有小数
 		PriorityQueue<Double> heap = new PriorityQueue<>((a, b) -> b.compareTo(a));
 		double sum = 0;
+		// 把所有的数加入大根堆并计算累加和
 		for (int num : nums) {
 			heap.add((double) num);
 			sum += num;
@@ -19,8 +20,12 @@ public class Code03_MinimumOperationsToHalveArraySum {
 		sum /= 2;
 		int ans = 0;
 		for (double minus = 0, cur; minus < sum; ans++, minus += cur) {
+			// 弹出当前堆最大值
 			cur = heap.poll() / 2;
+			// 除以2之后再放回堆
 			heap.add(cur);
+			//比较目前为止的累加和是否达到目标
+			// ans记录次数
 		}
 		return ans;
 	}
@@ -32,6 +37,7 @@ public class Code03_MinimumOperationsToHalveArraySum {
 	public static int size;
 
 	// 提交时把halveArray2改名为halveArray
+	// 这是自己建堆的写法
 	public static int halveArray2(int[] nums) {
 		size = nums.length;
 		long sum = 0;
