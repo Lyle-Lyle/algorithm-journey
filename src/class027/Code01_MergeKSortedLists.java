@@ -15,7 +15,7 @@ public class Code01_MergeKSortedLists {
 
 	// 提交以下的方法
 	public static ListNode mergeKLists(ArrayList<ListNode> arr) {
-		// 小根堆
+		// 小根堆 因为比较策略是谁小谁在堆顶
 		PriorityQueue<ListNode> heap = new PriorityQueue<>((a, b) -> a.val - b.val);
 		for (ListNode h : arr) {
 			// 遍历所有的头！
@@ -26,9 +26,10 @@ public class Code01_MergeKSortedLists {
 		if (heap.isEmpty()) {
 			return null;
 		}
-		// 先弹出一个节点，做总头部
+		// 先弹出一个节点，做总头部 最后会返回这个
 		ListNode h = heap.poll();
 		ListNode pre = h;
+		// 把弹出节点的下一个节点加入堆
 		if (pre.next != null) {
 			heap.add(pre.next);
 		}
