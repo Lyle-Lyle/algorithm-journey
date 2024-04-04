@@ -34,9 +34,12 @@ public class Code01_MergeKSortedLists {
 			heap.add(pre.next);
 		}
 		while (!heap.isEmpty()) {
+			//再从堆中弹出一个节点，然后连上之前弹出的节点
 			ListNode cur = heap.poll();
 			pre.next = cur;
+			// 移动指针到链表的最后一个 因为之后还要继续连节点
 			pre = cur;
+			// 如果这个节点后面还有节点 那继续加入堆
 			if (cur.next != null) {
 				heap.add(cur.next);
 			}
