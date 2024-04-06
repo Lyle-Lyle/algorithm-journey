@@ -80,6 +80,7 @@ public class Code01_CreateGraph {
 	// 三种方式建立无向图带权图
 	public static void undirectGraph(int[][] edges) {
 		// 邻接矩阵建图
+		// 无向图是对称的
 		for (int[] edge : edges) {
 			graph1[edge[0]][edge[1]] = edge[2];
 			graph1[edge[1]][edge[0]] = edge[2];
@@ -88,10 +89,12 @@ public class Code01_CreateGraph {
 		for (int[] edge : edges) {
 			// graph2.get(edge[0]).add(edge[1]);
 			// graph2.get(edge[1]).add(edge[0]);
+			// 一样的 也是对称加上就行
 			graph2.get(edge[0]).add(new int[] { edge[1], edge[2] });
 			graph2.get(edge[1]).add(new int[] { edge[0], edge[2] });
 		}
 		// 链式前向星建图
+		// 一样的正反两个方向加
 		for (int[] edge : edges) {
 			addEdge(edge[0], edge[1], edge[2]);
 			addEdge(edge[1], edge[0], edge[2]);
