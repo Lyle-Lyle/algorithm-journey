@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class Code02_TopoSortDynamicLeetcode {
 
 	public static int[] findOrder(int numCourses, int[][] prerequisites) {
+		//建图
 		ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
 		// 0 ~ n-1
 		for (int i = 0; i < numCourses; i++) {
