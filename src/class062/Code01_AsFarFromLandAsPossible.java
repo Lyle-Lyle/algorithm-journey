@@ -14,13 +14,16 @@ public class Code01_AsFarFromLandAsPossible {
 
 	public static int MAXM = 101;
 
+	// 进入队列的实际是一个坐标
 	public static int[][] queue = new int[MAXN * MAXM][2];
 
 	public static int l, r;
 
+	// 状态标记是否进过队列
 	public static boolean[][] visited = new boolean[MAXN][MAXM];
 
 	// 0:上，1:右，2:下，3:左
+	// 这个数组就是为了实现上下左右走的
 	public static int[] move = new int[] { -1, 0, 1, 0, -1 };
 	//                                      0  1  2  3   4
 	//                                               i
@@ -36,11 +39,15 @@ public class Code01_AsFarFromLandAsPossible {
 		int seas = 0;
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
+				// 找到陆地
 				if (grid[i][j] == 1) {
+					// 标记进过队列
 					visited[i][j] = true;
+					// 
 					queue[r][0] = i;
 					queue[r++][1] = j;
 				} else {
+					// 不是陆地那就是海洋
 					visited[i][j] = false;
 					seas++;
 				}
@@ -49,6 +56,7 @@ public class Code01_AsFarFromLandAsPossible {
 		if (seas == 0 || seas == n * m) {
 			return -1;
 		}
+		// 宽度优先遍历，一层一层
 		int level = 0;
 		while (l < r) {
 			level++;
