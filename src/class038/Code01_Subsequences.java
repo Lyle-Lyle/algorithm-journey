@@ -20,14 +20,17 @@ public class Code01_Subsequences {
 		return ans;
 	}
 
-	// s[i...]，之前决定的路径path，set收集结果时去重
+	// s[i...]，之前决定的路径path，set收集结果时去重，题目要求不重复的
 	public static void f1(char[] s, int i, StringBuilder path, HashSet<String> set) {
+		//判断是否达到字符串结尾
 		if (i == s.length) {
+			// 字符串结尾了 收集答案
 			set.add(path.toString());
 		} else {
 			path.append(s[i]); // 加到路径中去
 			f1(s, i + 1, path, set);
-			path.deleteCharAt(path.length() - 1); // 从路径中移除
+			path.deleteCharAt(path.length() - 1); // 从路径中移除，因为往回走了，走另外一条路，如果不删除那么就重复收集了
+			// i还是+1即使
 			f1(s, i + 1, path, set);
 		}
 	}
