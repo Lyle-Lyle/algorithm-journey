@@ -20,7 +20,7 @@ public class Code02_MinimumCostForTickets {
 	// 无论提交什么方法都带着这个数组      0  1  2
 	public static int[] durations = { 1, 7, 30 };
 
-	// 暴力尝试
+	// 暴力尝试 会超时
 	public static int mincostTickets1(int[] days, int[] costs) {
 		// 从0开始
 		return f1(days, costs, 0);
