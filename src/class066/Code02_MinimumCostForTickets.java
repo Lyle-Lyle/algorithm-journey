@@ -22,6 +22,7 @@ public class Code02_MinimumCostForTickets {
 
 	// 暴力尝试
 	public static int mincostTickets1(int[] days, int[] costs) {
+		// 从0开始
 		return f1(days, costs, 0);
 	}
 
@@ -34,8 +35,12 @@ public class Code02_MinimumCostForTickets {
 		// i下标 : 第days[i]天，有一场旅行
 		// i.... 最少花费是多少 
 		int ans = Integer.MAX_VALUE;
+		// 三种方案都试一遍
 		for (int k = 0, j = i; k < 3; k++) {
 			// k是方案编号 : 0 1 2
+			// j表示当前方案天数之后，应该从哪天开始旅行
+			//只要j没有越界
+			// 并且当前i就是开始旅行的那一天加上方案的这个旅行的天数比如1天，如果小于j，就一直增加j，直到j去到正确的天数
 			while (j < days.length && days[i] + durations[k] > days[j]) {
 				// 因为方案2持续的天数最多，30天
 				// 所以while循环最多执行30次
@@ -61,6 +66,7 @@ public class Code02_MinimumCostForTickets {
 		if (i == days.length) {
 			return 0;
 		}
+		// 如果缓存表的值不等于正无穷 说明之前展开过这个值
 		if (dp[i] != Integer.MAX_VALUE) {
 			return dp[i];
 		}
