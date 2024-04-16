@@ -97,6 +97,7 @@ public class Code03_DecodeWays {
 	}
 
 	// 严格位置依赖的动态规划 + 空间压缩
+	// 用几个变量代替dp表
 	public static int numDecodings4(String s) {
 		// dp[i+1]
 		int next = 1;
