@@ -19,6 +19,7 @@ public class Code03_DecodeWays {
 
 	// 暴力尝试
 	public static int numDecodings1(String s) {
+		// 暴力递归的最终状态
 		return f1(s.toCharArray(), 0);
 	}
 
@@ -29,11 +30,18 @@ public class Code03_DecodeWays {
 			return 1;
 		}
 		int ans;
+		// o不能开头
+		// i位置就3种情况，不能转，i位置一位数转换，i和i+1两位数转换
 		if (s[i] == '0') {
 			ans = 0;
 		} else {
+			// 只要不是0 i+1位置就还有
+			// i位置单独转了 所以继续看i+1位置
 			ans = f1(s, i + 1);
+			// i和i+1位置一起转
+			// i+1不能越界并且 i+ (i+1)位置的值不能大于26
 			if (i + 1 < s.length && ((s[i] - '0') * 10 + s[i + 1] - '0') <= 26) {
+				// 如果i+1位置也没有问题 就继续往下看
 				ans += f1(s, i + 2);
 			}
 		}
@@ -41,6 +49,7 @@ public class Code03_DecodeWays {
 	}
 
 	// 暴力尝试改记忆化搜索
+	// 
 	public static int numDecodings2(String s) {
 		int[] dp = new int[s.length()];
 		Arrays.fill(dp, -1);
@@ -68,6 +77,7 @@ public class Code03_DecodeWays {
 	}
 
 	// 严格位置依赖的动态规划
+	// 就是推这个dp表
 	public static int numDecodings3(String str) {
 		char[] s = str.toCharArray();
 		int n = s.length;
