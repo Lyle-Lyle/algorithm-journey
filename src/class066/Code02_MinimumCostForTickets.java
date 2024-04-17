@@ -36,6 +36,7 @@ public class Code02_MinimumCostForTickets {
 		// i.... 最少花费是多少 
 		int ans = Integer.MAX_VALUE;
 		// 三种方案都试一遍
+		// 这一部分就是枚举的复杂度
 		for (int k = 0, j = i; k < 3; k++) {
 			// k是方案编号 : 0 1 2
 			// j表示当前方案天数之后，应该从哪天开始旅行
