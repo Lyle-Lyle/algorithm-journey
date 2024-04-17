@@ -86,6 +86,7 @@ public class Code02_MinimumCostForTickets {
 	// 从底到顶的动态规划
 	// 0位置是最终状态 
 	// 如果是从简单状态出发应该是从days[]右边到左边
+	// 这是标准动态规划的写法 时间复杂度和上面的一样
 	public static int MAXN = 366;
 
 	public static int[] dp = new int[MAXN];
