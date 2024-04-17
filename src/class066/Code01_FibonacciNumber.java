@@ -48,6 +48,8 @@ public class Code01_FibonacciNumber {
 		return ans;
 	}
 
+	// 从底到顶的动态规划
+	// 就是先算简单的项 然后推到n
 	public static int fib3(int n) {
 		if (n == 0) {
 			return 0;
@@ -63,6 +65,7 @@ public class Code01_FibonacciNumber {
 		return dp[n];
 	}
 
+	// 在空间上优化为几个有限变量
 	public static int fib4(int n) {
 		if (n == 0) {
 			return 0;
@@ -70,6 +73,7 @@ public class Code01_FibonacciNumber {
 		if (n == 1) {
 			return 1;
 		}
+		// 第0项和第1项
 		int lastLast = 0, last = 1;
 		for (int i = 2, cur; i <= n; i++) {
 			cur = lastLast + last;
