@@ -25,6 +25,7 @@ public class Code02_WordSearch {
 	// 用来标记哪些字符无法再用
 	// 带路径的递归无法改成动态规划或者说没必要
 	// 从(i,j)出发，来到w[k]，请问后续能不能把word走出来w[k...]
+	// 矩阵的情况也影响递归 所以没必要改动态规划 可能性太多 直接递归展开就好
 	public static boolean f(char[][] b, int i, int j, char[] w, int k) {
 		if (k == w.length) {
 			return true;
