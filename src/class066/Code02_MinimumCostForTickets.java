@@ -84,6 +84,8 @@ public class Code02_MinimumCostForTickets {
 
 	// 严格位置依赖的动态规划
 	// 从底到顶的动态规划
+	// 0位置是最终状态 
+	// 如果是从简单状态出发应该是从days[]右边到左边
 	public static int MAXN = 366;
 
 	public static int[] dp = new int[MAXN];
@@ -91,7 +93,9 @@ public class Code02_MinimumCostForTickets {
 	public static int mincostTickets3(int[] days, int[] costs) {
 		int n = days.length;
 		Arrays.fill(dp, 0, n + 1, Integer.MAX_VALUE);
+		// 下标来到越界位置
 		dp[n] = 0;
+		// 这个就是动态规划的转移方程跟尝试策略就是一回事
 		for (int i = n - 1; i >= 0; i--) {
 			for (int k = 0, j = i; k < 3; k++) {
 				while (j < days.length && days[i] + durations[k] > days[j]) {
