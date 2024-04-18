@@ -12,6 +12,8 @@ public class Code05_UglyNumberII {
 		//      1 2 ...  ?
 		int[] dp = new int[n + 1];
 		dp[1] = 1;
+		// i2 i3 i5表示指针的下标
+		// 
 		for (int i = 2, i2 = 1, i3 = 1, i5 = 1, a, b, c, cur; i <= n; i++) {
 			a = dp[i2] * 2;
 			b = dp[i3] * 3;
