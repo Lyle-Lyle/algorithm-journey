@@ -27,6 +27,8 @@ public class Code03_DecodeWays {
 	// s[i....]有多少种有效的转化方案
 	public static int f1(char[] s, int i) {
 		if (i == s.length) {
+			// 为什么返回1不是0
+			// 因为题目要求返回ways，这个1代表一种有效决策
 			return 1;
 		}
 		int ans;
